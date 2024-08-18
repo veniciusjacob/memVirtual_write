@@ -16,7 +16,6 @@ O objetivo deste programa é demonstrar o uso de memória virtual ao lidar com a
 
 3. **Execução Contínua**: Após o processamento inicial do arquivo, o programa entra em um loop infinito, esperando 10 segundos em cada iteração. Isso permite que o programa continue em execução para observação contínua do uso de memória.
 
-## Estrutura do Código
 
 ### Funções Principais
 
@@ -35,5 +34,18 @@ O objetivo deste programa é demonstrar o uso de memória virtual ao lidar com a
 Para compilar o programa, use o seguinte comando:
 
 ```bash
-gcc -o memvi mem_write_large.c
+gcc mem_write_large.c -o mem_write_large
 ```
+
+## Execução
+
+```bash
+./mem_write_large big-file.txt
+```
+
+## Observação
+
+O programa permanecerá em execução indefinidamente. Para parar o programa, use `Ctrl+C` no terminal.
+
+
+
