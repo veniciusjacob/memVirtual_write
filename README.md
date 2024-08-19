@@ -1,51 +1,41 @@
-# Memória Virtual em C - Processamento de Arquivos Grandes
+# Mapeamento de Arquivo TXT para Memória Virtual
 
 ## Descrição
 
-Este projeto consiste em um programa em C que lê um arquivo de texto grande e o carrega na memória virtual utilizando o mapeamento de arquivos (`mmap`). O programa simula o processamento do arquivo em páginas de memória e permanece em execução para permitir o monitoramento do uso de memória.
+Este programa em C demonstra como mapear um arquivo TXT para a memória virtual utilizando a função `mmap`. O programa permite escrever conteúdo em um arquivo diretamente na memória mapeada, sincronizar essa memória com o arquivo no disco e exibir informações sobre o uso da memória virtual.
 
-## Objetivo
+## Funcionalidades
 
-O objetivo deste programa é demonstrar o uso de memória virtual ao lidar com arquivos grandes e fornecer uma base para a análise de consumo de memória de processos em execução. É útil para estudos de sistemas operacionais, especialmente na parte de gerenciamento de memória.
+- **Mapeamento de Arquivo:** Mapeia um arquivo TXT para a memória virtual.
+- **Escrita na Memória Mapeada:** Escreve uma mensagem no arquivo diretamente na memória virtual.
+- **Informações sobre Memória Virtual:** Exibe o endereço da memória mapeada e o tamanho do mapeamento.
 
-## Funcionamento
+## Requisitos
 
-1. **Mapeamento de Arquivo**: O arquivo de texto fornecido como entrada é mapeado para a memória virtual usando a função `mmap`. Este mapeamento permite que o arquivo seja tratado como se estivesse carregado diretamente na memória, mesmo que fisicamente ele não esteja completamente na RAM.
+- GCC (GNU Compiler Collection) para compilar o programa.
+- Um sistema operacional que suporte a função `mmap` (como Linux ou outros Unix-like).
 
-2. **Processamento em Páginas**: O programa simula o processamento do arquivo em partes (páginas) de tamanho fixo (definido por `PAGE_SIZE`). Cada página é acessada na memória para garantir que ela seja carregada.
+## Compilação
 
-3. **Execução Contínua**: Após o processamento inicial do arquivo, o programa entra em um loop infinito, esperando 10 segundos em cada iteração. Isso permite que o programa continue em execução para observação contínua do uso de memória.
+Para compilar o programa, execute o seguinte comando no terminal:
 
-
-### Funções Principais
-
-- `load_file_into_memory(const char *filename)`: Esta função é responsável por mapear o arquivo na memória e processá-lo em páginas. Ela mantém o programa em execução após o processamento.
-
-- `main(int argc, char *argv[])`: Função principal que inicia o programa e chama `load_file_into_memory` com o nome do arquivo passado como argumento.
-
-### Definições Importantes
-
-- `PAGE_SIZE`: Define o tamanho da página de memória que será usada para processar o arquivo.
-
-## Como Utilizar
-
-### Compilação
-
-Para compilar o programa, use o seguinte comando:
-
-```bash
-gcc mem_write_large.c -o mem_write_large
-```
+```gcc map_file_to_memory.c -o map_file_to_memory ```
 
 ## Execução
 
-```bash
-./mem_write_large big-file.txt
+Para executar o programa, use o seguinte comando, passando o nome do arquivo TXT que você deseja mapear para a memória:
+
+``` ./map_file_to_memory big-file.txt ```
+
+## Saída Esperada
+
+Após a execução, o programa exibirá informações sobre o mapeamento de memória:
+
 ```
+Arquivo mapeado para a memória virtual e escrito com sucesso.
+Endereço da memória mapeada: 0x7fcbf9d73000
+Tamanho da memória mapeada: 4096 bytes
 
-## Observação
-
-O programa permanecerá em execução indefinidamente. Para parar o programa, use `Ctrl+C` no terminal.
-
+```
 
 
