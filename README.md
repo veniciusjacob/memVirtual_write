@@ -19,7 +19,9 @@ Este programa em C demonstra como mapear um arquivo TXT para a memória virtual 
 
 Para compilar o programa, execute o seguinte comando no terminal:
 
-```bash gcc map_file_to_memory.c -o map_file_to_memory ```
+```
+gcc map_file_to_memory.c -o map_file_to_memory 
+```
 
 ## Execução
 
